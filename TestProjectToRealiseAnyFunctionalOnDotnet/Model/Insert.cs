@@ -8,10 +8,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 {
     public class Insert : Assort<int>
     {
-		public Insert(IEnumerable<int> array) 
-		{
-			base.Array = array.ToArray();
-		}
+		public Insert(IEnumerable<int> array) : base(array.myToArray()){ }
 
 		public override void Sort() 
 		{		

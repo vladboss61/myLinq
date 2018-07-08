@@ -5,7 +5,8 @@ using System.Text;
 
 namespace TestProjectToRealiseAnyFunctionalOnDotnet.Helper
 {
-	public static class AlgorithmHelper {
+	public static class AlgorithmHelper 
+	{
 		public static void Swap<T>(ref T left, ref T right) 
 		{
 			T temp = left;
@@ -17,23 +18,24 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Helper
 			where Template : IComparable
 		{			
 			var low = 0;
-			var hight = sequence.Count;
+			var hight = sequence.Count - 1;
 
-			while (low < hight )
+			while (low < hight)
 			{
-				var mid = (hight - low) / 2;
+				int mid = low + (hight - low) / 2;
 				if ( sequence[mid].CompareTo(findValue).Equals(0))
 					return mid;
 
 				if (sequence[mid].CompareTo(findValue).Equals(1))
-					mid = low;
+					hight = mid;
 
 				else
-					mid = hight;
+					low = mid;
 			}
 			return -1;
 		}
-		public static bool LineSearsh<Template>(IList<Template> sequence,Template value) 
+
+		public static bool LineSearch<Template>(IList<Template> sequence,Template value) 
 		{
 			foreach ( var item in sequence)
 			{

@@ -8,6 +8,13 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Algorithm
     {
 		public Node<T> left { get; set; }
 		public Node<T> right { get; set; }
-		public T value;
+		public T Value { get; set; }
+
+		public Node(T value) 
+		{
+			Value = value;
+			left = null;
+			right = null;
+		}
     }
 }

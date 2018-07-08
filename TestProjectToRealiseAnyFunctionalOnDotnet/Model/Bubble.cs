@@ -8,10 +8,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 {
 	public class Bubble : Assort<int> 
 	{
-		public Bubble(IEnumerable<int> sequence)
-		{
-			base.Array = sequence.ToArray();
-		}
+		public Bubble(IEnumerable<int> sequence) : base(sequence.myToArray()) { }
 
 		public override void Sort() 
 		{
