@@ -30,6 +30,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 				}
 			}
 		}
+
 		public bool LineSearsh(int value) 
 		{
 			foreach ( var item in Array)

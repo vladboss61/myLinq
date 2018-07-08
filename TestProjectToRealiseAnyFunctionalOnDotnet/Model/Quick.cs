@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Arr = System.Array;
+using CollectionArray = System.Array;
 
 namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 {

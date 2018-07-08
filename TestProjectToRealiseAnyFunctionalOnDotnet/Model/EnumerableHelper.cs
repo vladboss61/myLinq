@@ -5,29 +5,26 @@ using System.Text;
 
 namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 {
-   public static class IEnumerableHelper
-   {
-		public static void ForEach(this IEnumerable<int> array, Action<int> action) 
-		{
-			if ( ReferenceEquals(action, null) 
-				|| ReferenceEquals(array, null))
+	public static class EnumerableHelper {
+		public static void ForEach(this IEnumerable<int> array, Action<int> action) {
+			if ( ReferenceEquals(action,null)
+			   || ReferenceEquals(array,null) )
 				throw new ArgumentNullException();
 
-			foreach (var item in array)
+			foreach ( var item in array )
 			{
 				action(item);
 			}
 		}
 
-		public static bool TryForAll(this IEnumerable<int> sequence, Func<int, bool>  predicate) 
-		{
+		public static bool TryForAll(this IEnumerable<int> sequence, Func<int,bool> predicate) {
 			if ( sequence == null )
 				throw new Exception("sequence is null");
 
 			if ( predicate == null )
 				throw new Exception("predicate is null");
 
-			foreach ( var item in sequence)
+			foreach ( var item in sequence )
 			{
 				if ( !predicate(item) )
 					return false;
@@ -36,15 +33,14 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 			return true;
 		}
 
-		public static IEnumerable<int> mySelect(this IEnumerable<int> sequence, Func<int, int> func) {
-			foreach ( var item in sequence)
+		public static IEnumerable<int> mySelect(this IEnumerable<int> sequence, Func<int,int> func) {
+			foreach ( var item in sequence )
 			{
 				yield return func(item);
 			}
 		}
 
-		public static IEnumerable<int> MyWhere(this IEnumerable<int> sequence, Func<int, bool> func) 
-		{
+		public static IEnumerable<int> MyWhere(this IEnumerable<int> sequence, Func<int,bool> func) {
 			foreach ( var item in sequence )
 			{
 				if ( func(item) )
@@ -52,18 +48,17 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 			}
 		}
 
-		public static int myFindFirstOrDefault(this IEnumerable<int> sequence, Func<int, bool> func) 
-		{
-			foreach (var item in sequence)
+		public static int myFindFirstOrDefault(this IEnumerable<int> sequence, Func<int,bool> func) {
+			foreach ( var item in sequence )
 			{
 				if ( func(item) )
 					return item;
 			}
+
 			return default(int);
 		}
 
-		public static int myCount(this IEnumerable<int> sequence) 
-		{
+		public static int myCount(this IEnumerable<int> sequence) {
 			int count = 0;
 			foreach ( var item in sequence )
 			{
@@ -72,8 +67,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 			return count;
 		}
 
-		public static int[] myToArray(this IEnumerable<int> sequence) 
-		{
+		public static int[] myToArray(this IEnumerable<int> sequence) {
 			int[] array = new int[sequence.myCount()];
 			var enumerator = sequence.GetEnumerator();
 
@@ -95,7 +89,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 
 			//realization third ;
 			int j = 0;
-			foreach ( var item in sequence)
+			foreach ( var item in sequence )
 			{
 				array[j] = item;
 				i++;
@@ -104,10 +98,9 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 			return array;
 		}
 
-		public static int myMax(this IEnumerable<int> sequence) 
-		{
+		public static int myMax(this IEnumerable<int> sequence) {
 			int max = int.MinValue;
-			foreach ( var item in sequence)
+			foreach ( var item in sequence )
 			{
 				if ( max < item )
 					max = item;
@@ -115,8 +108,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 			return max;
 		}
 
-		public static int myMin(this IEnumerable<int> sequence) 
-		{
+		public static int myMin(this IEnumerable<int> sequence) {
 			int min = int.MaxValue;
 			foreach ( var item in sequence )
 			{
@@ -126,10 +118,9 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 			return min;
 		}
 
-		public static List<int> myToList(this IEnumerable<int> sequence) 
-		{
+		public static List<int> myToList(this IEnumerable<int> sequence) {
 			var list = new List<int>();
-			foreach ( var item in sequence)
+			foreach ( var item in sequence )
 			{
 				list.Add(item);
 			}
@@ -138,7 +129,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 
 		public static int myLast(this IEnumerable<int> sequence) {
 			int last = default(int);
-			foreach ( var item in sequence)
+			foreach ( var item in sequence )
 			{
 				last = item;
 			}
@@ -149,7 +140,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 
 			//realization first;
 			int first = default(int);
-			foreach ( var item in sequence)
+			foreach ( var item in sequence )
 			{
 				first = item;
 				break;
@@ -163,5 +154,33 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 			}
 			return first;
 		}
-   }
+
+		public static IEnumerable<int> myUnion(this IEnumerable<int> sequence, IEnumerable<int> other) {
+			var temp = new List<int>(sequence);
+			foreach ( var item in other )
+			{
+				if ( !temp.Contains(item) )
+					temp.Add(item);
+			}						
+			return temp;
+		}
+
+		public static IEnumerable<int> myIntersect(this IEnumerable<int> sequence, IEnumerable<int> other) {
+			ISet<int> set = new HashSet<int>(sequence);
+			foreach ( var item in other)
+			{				
+				if (set.Remove(item))
+					yield return item;
+			}
+		}
+
+		public static IEnumerable<int> myExcept(this IEnumerable<int> sequence,IEnumerable<int> other) {
+			ISet<int> set = new HashSet<int>(other);
+			foreach ( var item in sequence )
+			{
+				if (set.Add(item))
+					yield return item;
+			}
+		}
+	}
 }

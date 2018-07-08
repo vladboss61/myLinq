@@ -8,33 +8,34 @@ using System.Collections.Generic;
 
 namespace XUnitTestTestXUnit
 {
-	public class TestProjectToRealiseAnyFunctionalOnDotnetTest {
+	public class TestProjectToRealiseAnyFunctionalOnDotnetTest 
+	{
 
 		[Theory]
 		[MemberData(nameof(GetTestData_myFirst))]
-		public static void Test_myFirst(int actual,int[] expected) {
-			Assert.Equal(expected.myFirst(),actual);
+		public static void Test_myFirst(int actual, int[] expected) {
+			Assert.Equal(expected.myFirst(), actual);
 		}
 
 		public static IEnumerable<object[]> GetTestData_myFirst() {
-			yield return new object[] { 11,new int[] { 11,20,-5,1,21,4,12,11 } };
-			yield return new object[] { 12,new int[] { 12,11,-5,-1,1,4,12,11 } };
+			yield return new object[] { 11, new int[] { 11,20,-5,1,21,4,12,11 } };
+			yield return new object[] { 12, new int[] { 12,11,-5,-1,1,4,12,11 } };
 		}
 
 		[Theory]
 		[MemberData(nameof(GetTestData_myLast))]
-		public static void Test_myLast(int actual,int[] expected) {
-			Assert.Equal(expected.myLast(),actual);
+		public static void Test_myLast(int actual, int[] expected) {
+			Assert.Equal(expected.myLast(), actual);
 		}
 
 		public static IEnumerable<object[]> GetTestData_myLast() {
-			yield return new object[] { 25,new int[] { 11,20,-5,1,21,4,12,25 } };
-			yield return new object[] { 26,new int[] { 12,11,-5,-1,1,4,12,26 } };
+			yield return new object[] { 25, new int[] { 11,20,-5,1,21,4,12,25 } };
+			yield return new object[] { 26, new int[] { 12,11,-5,-1,1,4,12,26 } };
 		}
 
 		[Theory]
 		[MemberData(nameof(GetTestData_mySelect))]
-		public static void Test_mySelect(int[] actual,int[] expected) {
+		public static void Test_mySelect(int[] actual, int[] expected) {
 			Assert.Equal(actual.mySelect(el => el * el),expected);
 		}
 
@@ -50,14 +51,17 @@ namespace XUnitTestTestXUnit
 		}
 
 		public static IEnumerable<object[]> GetTestData_myMax() {
-			yield return new object[] { new int[] { 1,2,3,11,10 },11 };
+			yield return new object[] { new int[] { 1,2,3,11,10 }, 11 };
 		}
 
 		[Fact]
-		public static void Test_ForEach() {
+		public static void Test_Should_Throw_ArgumentNullException_in_ForEach() {
 			Assert.Throws<ArgumentNullException>(
 				() => new[] { 1,2,3 }.ForEach(null)
 			);
-		}		
+			//Assert.Throws<Exception>(
+			//	() => new int[] { }.TryForAll(null)
+			//);
+		}
 	}
 }
