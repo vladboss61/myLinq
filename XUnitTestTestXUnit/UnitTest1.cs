@@ -57,11 +57,8 @@ namespace XUnitTestTestXUnit
 		[Fact]
 		public static void Test_Should_Throw_ArgumentNullException_in_ForEach() {
 			Assert.Throws<ArgumentNullException>(
-				() => new[] { 1,2,3 }.ForEach(null)
+				() => new[] { 1, 2, 3 }.ForEach(null)
 			);
-			//Assert.Throws<Exception>(
-			//	() => new int[] { }.TryForAll(null)
-			//);
 		}
 	}
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 {
-    interface ISortFactory
+    public interface ISortFactory
     {
 		ISortable CreateSort(IEnumerable<int> sequence);
     }

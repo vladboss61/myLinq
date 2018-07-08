@@ -4,8 +4,8 @@ using System.Text;
 
 namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 {
-	public interface ISortable
-	{
+    public interface ISortable
+    {
 		void Sort();
-	}
+    }
 }

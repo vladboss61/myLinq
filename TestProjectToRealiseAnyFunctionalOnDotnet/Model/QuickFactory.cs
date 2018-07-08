@@ -6,8 +6,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 {
 	public class QuickFactory : ISortFactory 
 	{
-		public ISortable CreateSort(IEnumerable<int> sequence) 
-		{
+		public ISortable CreateSort(IEnumerable<int> sequence) {
 			return new Quick(sequence);
 		}
 	}

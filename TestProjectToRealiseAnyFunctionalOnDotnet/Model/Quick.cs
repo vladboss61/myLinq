@@ -7,7 +7,7 @@ using CollectionArray = System.Array;
 namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 {
 	public class Quick : Assort<int> 
-	{
+	{			
 		public Quick(IEnumerable<int> array)
 		{	
 			base.Array = array.ToArray();
@@ -21,7 +21,6 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 			var random = new Random();
 			for ( int i = 0; i < Array.Length; i++ )
 			{
-
 				Array[i] = random.Next();
 			}
 		}

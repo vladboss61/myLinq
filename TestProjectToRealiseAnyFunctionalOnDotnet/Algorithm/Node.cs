@@ -4,8 +4,10 @@ using System.Text;
 
 namespace TestProjectToRealiseAnyFunctionalOnDotnet.Algorithm
 {
-    public class Vector
+    public class Node<T>
     {
-		
+		public Node<T> left { get; set; }
+		public Node<T> right { get; set; }
+		public T value;
     }
 }

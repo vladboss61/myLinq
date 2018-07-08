@@ -8,7 +8,8 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 	public static class EnumerableHelper {
 		public static void ForEach(this IEnumerable<int> array, Action<int> action) {
 			if ( ReferenceEquals(action,null)
-			   || ReferenceEquals(array,null) )
+				|| ReferenceEquals(array,null) 
+			   )
 				throw new ArgumentNullException();
 
 			foreach ( var item in array )
@@ -64,6 +65,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 			{
 				count++;
 			}
+
 			return count;
 		}
 
@@ -89,10 +91,11 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 
 			//realization third ;
 			int j = 0;
+
 			foreach ( var item in sequence )
 			{
 				array[j] = item;
-				i++;
+				j++;
 			}
 
 			return array;
@@ -100,16 +103,19 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 
 		public static int myMax(this IEnumerable<int> sequence) {
 			int max = int.MinValue;
+
 			foreach ( var item in sequence )
 			{
 				if ( max < item )
 					max = item;
 			}
+
 			return max;
 		}
 
 		public static int myMin(this IEnumerable<int> sequence) {
 			int min = int.MaxValue;
+
 			foreach ( var item in sequence )
 			{
 				if ( min > item )
@@ -120,6 +126,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 
 		public static List<int> myToList(this IEnumerable<int> sequence) {
 			var list = new List<int>();
+
 			foreach ( var item in sequence )
 			{
 				list.Add(item);
@@ -129,6 +136,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 
 		public static int myLast(this IEnumerable<int> sequence) {
 			int last = default(int);
+
 			foreach ( var item in sequence )
 			{
 				last = item;
@@ -137,7 +145,6 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 		}
 
 		public static int myFirst(this IEnumerable<int> sequence) {
-
 			//realization first;
 			int first = default(int);
 			foreach ( var item in sequence )
@@ -157,16 +164,30 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 
 		public static IEnumerable<int> myUnion(this IEnumerable<int> sequence, IEnumerable<int> other) {
 			var temp = new List<int>(sequence);
+
+			foreach ( var item in temp)
+			{
+				yield return item;
+			}
+
 			foreach ( var item in other )
 			{
 				if ( !temp.Contains(item) )
-					temp.Add(item);
-			}						
-			return temp;
+					yield return item;
+			}
+
+			//other Realization
+			//foreach(var item in other){
+			//	if ( !temp.Contains(item) )
+			//		temp.Add(item);
+			//
+			//return temp;
 		}
 
 		public static IEnumerable<int> myIntersect(this IEnumerable<int> sequence, IEnumerable<int> other) {
+
 			ISet<int> set = new HashSet<int>(sequence);
+
 			foreach ( var item in other)
 			{				
 				if (set.Remove(item))
@@ -174,13 +195,44 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 			}
 		}
 
-		public static IEnumerable<int> myExcept(this IEnumerable<int> sequence,IEnumerable<int> other) {
+		public static IEnumerable<int> myExcept(this IEnumerable<int> sequence, IEnumerable<int> other) {
+
 			ISet<int> set = new HashSet<int>(other);
+
 			foreach ( var item in sequence )
 			{
 				if (set.Add(item))
 					yield return item;
 			}
 		}
+
+		public static IEnumerable<int> Full(this IEnumerable<int> sequence, IEnumerable<int> other) {
+
+			ISet<int> set = new HashSet<int>(other);
+
+			foreach ( var item in sequence )
+			{
+				if ( set.Add(item) )
+					yield return item;
+			}
+
+			set = new HashSet<int>(sequence);
+			foreach ( var item in other )
+			{
+				if ( set.Add(item) )
+					yield return item;
+			}
+		}
+
+		public static IEnumerable<int> myUnique(this IEnumerable<int> sequence) {
+
+			ISet<int> set = new HashSet<int>();
+
+			foreach ( var item in sequence )
+			{
+				if ( set.Add(item) )
+					yield return item;
+			}
+		}				
 	}
 }

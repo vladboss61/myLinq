@@ -10,19 +10,27 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet
     {
        public static void Main()
         {
-			var factory = new BubbleFactory();
+			var factory = new InsertFactory();
 			Console.WriteLine();
 
 			var first = new int[] { 0, 2 };
-			var second = new int[] { 0, 1, 3, 4, 5 };
-			first.Union(second).ForEach(el => Console.WriteLine(el));
-			Console.WriteLine();
-			first.myUnion(second).ForEach(el => Console.WriteLine(el));
-			Console.WriteLine();
-			first.Except(second).ForEach(el => Console.WriteLine(el));
-			Console.WriteLine();
-			first.myExcept(second).ForEach(el => Console.WriteLine(el));
+			var second = new int[] { 0, 2, 10, 1, 30, 4, 3 };
 
+			var insersorter = (Assort<int>)factory.CreateSort(second);
+			insersorter.Sort();
+			insersorter.Array.ForEach(el => Console.WriteLine(el));					
+			
+			//first.Union(second).ForEach(el => Console.WriteLine(el));
+			//Console.WriteLine();
+
+			//first.myUnion(second).ForEach(el => Console.WriteLine(el));
+			//Console.WriteLine();
+
+			//first.Full(second).ForEach(el => Console.WriteLine(el));
+
+			//Console.WriteLine();
+			//first.myExcept(second).ForEach(el => Console.WriteLine(el));
+			//second.myUnique().ForEach(el => Console.WriteLine(el));
 
 			//var arr = factory.CreateSort(GeneratorHelper.GenerateSequenceOfNumber(10));
 			//arr.Sort();
@@ -45,10 +53,4 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet
 			Console.ReadLine();
 		}
 	}
-		
-	
-
-
-	
-
 }
