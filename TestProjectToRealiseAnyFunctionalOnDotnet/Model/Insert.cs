@@ -12,9 +12,6 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 		{
 			base.Array = array.ToArray();
 		}
-		public  int[] GetArray() {
-			return Array;
-		}
 
 		public override void Sort() 
 		{		
