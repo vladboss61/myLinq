@@ -11,12 +11,14 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Algorithm
 
 		private void DownRecurse(Node<T> root) 
 		{
-			if(root == null )
+			if ( root == null )
+			{
 				return;
+			}
 
 			ResultDown += root.Value + " ";
-			DownRecurse(root.left);
-			DownRecurse(root.right);
+			DownRecurse(root.Left);
+			DownRecurse(root.Right);
 		}
 
 		public void Down() 
@@ -24,6 +26,4 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Algorithm
 			DownRecurse(Root);
 		}
 	}
-
-	
 }

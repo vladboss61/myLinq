@@ -36,7 +36,7 @@ namespace XUnitTestTestXUnit
 		[Theory]
 		[MemberData(nameof(GetTestData_mySelect))]
 		public static void Test_mySelect(int[] actual, int[] expected) {
-			Assert.Equal(actual.mySelect(el => el * el),expected);
+			Assert.Equal(actual.mySelect(el => el * el), expected);
 		}
 
 		public static IEnumerable<object[]> GetTestData_mySelect() {

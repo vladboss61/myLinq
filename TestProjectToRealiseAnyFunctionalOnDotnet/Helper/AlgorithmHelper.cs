@@ -20,7 +20,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Helper
 			var low = 0;
 			var hight = sequence.Count - 1;
 
-			while (low < hight)
+			while (low <= hight)
 			{
 				int mid = low + (hight - low) / 2;
 				if ( sequence[mid].CompareTo(findValue).Equals(0))
