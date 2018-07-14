@@ -14,7 +14,15 @@ namespace XUnitTestTestXUnit
 		[Theory]
 		[MemberData(nameof(GetTestData_myFirst))]
 		public static void Test_myFirst(int actual, int[] expected) {
-			Assert.Equal(expected.myFirst(), actual);
+
+			var forTestingConstructor = new int[] { 1,2,3 };
+			var moq = new Mock<Insert>(MockBehavior.Default, forTestingConstructor);
+			
+			moq.SetupSet(el => el.Array = new[] { 3,2,1 });
+
+			var arr = moq.Object;
+			
+			Assert.Equal(expected.myLast(), actual);
 		}
 
 		public static IEnumerable<object[]> GetTestData_myFirst() {

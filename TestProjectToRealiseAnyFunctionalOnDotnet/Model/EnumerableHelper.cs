@@ -409,6 +409,18 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 			//}
 		}
 
+		public static IEnumerable<T> mySkipWhile<T>(this IEnumerable<T>sequence, Func<T,bool> func) {
+			bool flag = false;
+			foreach ( var item in sequence)
+			{
+				if ( !flag && !func(item) )
+					flag = true;
+				if ( flag )
+					yield return item;
+			}
+
+		}
+
 		public static IEnumerable<int> myTake(this IEnumerable<int> sequence,
 			int takeOf) 
 		{

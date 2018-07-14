@@ -10,6 +10,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
     {
 		public Insert(IEnumerable<int> array) : base(array.myToArray()){ }
 
+
 		public override void Sort() 
 		{		
 			for ( int i = 0; i < Array.Length; i++)

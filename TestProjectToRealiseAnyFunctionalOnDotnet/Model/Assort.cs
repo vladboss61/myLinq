@@ -11,7 +11,7 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 			Array = array;
 		}
 
-		public T[] Array { get; protected set; }
+		public T[] Array { get; set; }
 		public abstract void Sort();
     }
 }
