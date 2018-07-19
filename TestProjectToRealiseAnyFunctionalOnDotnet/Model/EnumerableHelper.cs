@@ -418,7 +418,6 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 				if ( flag )
 					yield return item;
 			}
-
 		}
 
 		public static IEnumerable<int> myTake(this IEnumerable<int> sequence,
