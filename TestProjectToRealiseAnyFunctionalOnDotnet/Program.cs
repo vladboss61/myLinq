@@ -4,6 +4,7 @@ using System.Linq;
 using TestProjectToRealiseAnyFunctionalOnDotnet.Algorithm;
 using TestProjectToRealiseAnyFunctionalOnDotnet.Helper;
 using TestProjectToRealiseAnyFunctionalOnDotnet.Model;
+using TestProjectToRealiseAnyFunctionalOnDotnet.Model.Observer;
 
 namespace TestProjectToRealiseAnyFunctionalOnDotnet
 {
@@ -11,11 +12,18 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet
     {
        public static void Main()
         {
-			new[] { 1,2,3 }				
-				.myZipToStart(new[] { 60,60 })
-				.myZipToEnd(new[] { 90, 90 })
-				.myZipInsert(new[] { 20,30 }, 1)
-				.ForEach(Console.WriteLine);
+			var v = new Subject.Simulator();
+			
+			Subject subject = new Subject();
+			Observer observer = new Observer(subject,"Center","\t\t");
+			
+			subject.Go();
+
+			Observer observer2 = new Observer(subject,"Right","\t\t\t\t");
+
+			subject.Go();
+			// Wait for user
+			Console.Read();
 		}
 	}
 }
