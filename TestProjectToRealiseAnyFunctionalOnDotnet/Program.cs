@@ -5,25 +5,15 @@ using TestProjectToRealiseAnyFunctionalOnDotnet.Algorithm;
 using TestProjectToRealiseAnyFunctionalOnDotnet.Helper;
 using TestProjectToRealiseAnyFunctionalOnDotnet.Model;
 using TestProjectToRealiseAnyFunctionalOnDotnet.Model.Observer;
+using TestProjectToRealiseAnyFunctionalOnDotnet.Model.Singleton;
 
 namespace TestProjectToRealiseAnyFunctionalOnDotnet
 {
 	static class Program
     {
-       public static void Main()
-        {
-			var v = new Subject.Simulator();
-			
-			Subject subject = new Subject();
-			Observer observer = new Observer(subject,"Center","\t\t");
-			
-			subject.Go();
+		public static void Main() {
 
-			Observer observer2 = new Observer(subject,"Right","\t\t\t\t");
-
-			subject.Go();
-			// Wait for user
-			Console.Read();
+			Console.ReadLine();
 		}
 	}
 }

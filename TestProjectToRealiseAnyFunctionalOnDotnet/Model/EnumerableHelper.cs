@@ -9,8 +9,8 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 {
 	public static class EnumerableHelper 
 	{
-		public static void ForEach(this IEnumerable<int> array,
-			Action<int> action) 
+		public static void ForEach<T>(this IEnumerable<T> array,
+			Action<T> action) 
 		{
 			if (action == null || array == null)
 			{
@@ -494,14 +494,19 @@ namespace TestProjectToRealiseAnyFunctionalOnDotnet.Model
 				yield return item;
 			}
 		}
-		
-		//public static IEnumerable<ICast> myCast<ICast, IOther>(this IEnumerable<IOther> sequence) 
-		//	where IOther : ICast
-		//{
-		//	foreach ( var item in sequence)
-		//	{
-		//		yield return item;
-		//	}
-		//}		
+
+		//TO DO:  Remove or recreate myCast 
+		public static IEnumerable<TCast> myCast<TCast, T>(this IEnumerable<T> sequence)
+		{			
+			return sequence
+						   .Select(el => (TCast)(object)el);
+		}
+		//TO DO:  Remove or refactor myTypeOf 
+		public static IEnumerable<TCast> myTypeOf<TCast, T>(this IEnumerable<T> sequence)			
+		{
+			return sequence
+						   .Where(el => el is TCast)
+						   .Select(el => (TCast)(object)el);
+		}
 	}
 }

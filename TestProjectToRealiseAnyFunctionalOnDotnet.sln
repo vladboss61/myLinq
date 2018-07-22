@@ -3,12 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProjectToRealiseAnyFunctionalOnDotnet", "TestProjectToRealiseAnyFunctionalOnDotnet\TestProjectToRealiseAnyFunctionalOnDotnet.csproj", "{E1B7553C-ADA8-4E72-9448-91242EA35C81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProjectToRealiseAnyFunctionalOnDotnet", "TestProjectToRealiseAnyFunctionalOnDotnet\TestProjectToRealiseAnyFunctionalOnDotnet.csproj", "{E1B7553C-ADA8-4E72-9448-91242EA35C81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestTestXUnit", "XUnitTestTestXUnit\XUnitTestTestXUnit.csproj", "{C03B98DF-15D6-4422-8BB7-3E886BE91576}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestTestXUnit", "XUnitTestTestXUnit\XUnitTestTestXUnit.csproj", "{C03B98DF-15D6-4422-8BB7-3E886BE91576}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E1B7553C-ADA8-4E72-9448-91242EA35C81} = {E1B7553C-ADA8-4E72-9448-91242EA35C81}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MEF", "MEF\MEF.csproj", "{5B7A28B1-747B-4C8D-B4C3-65DA089D9678}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,10 @@ Global
 		{C03B98DF-15D6-4422-8BB7-3E886BE91576}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C03B98DF-15D6-4422-8BB7-3E886BE91576}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C03B98DF-15D6-4422-8BB7-3E886BE91576}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B7A28B1-747B-4C8D-B4C3-65DA089D9678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B7A28B1-747B-4C8D-B4C3-65DA089D9678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B7A28B1-747B-4C8D-B4C3-65DA089D9678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B7A28B1-747B-4C8D-B4C3-65DA089D9678}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

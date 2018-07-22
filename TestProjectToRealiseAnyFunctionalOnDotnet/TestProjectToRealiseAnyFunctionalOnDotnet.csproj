@@ -5,4 +5,12 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Model\Adapter\" />
+    <Folder Include="Model\AbstractFactory\" />
+    <Folder Include="Model\Decorator\" />
+    <Folder Include="Model\ChainOfResponsibility\" />
+    <Folder Include="Model\Compositor\" />
+  </ItemGroup>
+
 </Project>
